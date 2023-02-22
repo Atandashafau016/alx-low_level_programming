@@ -4,7 +4,7 @@
  *print_to_98 - print al numbers from inout to 98
  *@n: the starting number
  */
-void print_to_98(int n);
+void print_to_98(int n)
 {
 if (n >= 98)
 {

@@ -5,9 +5,8 @@
  */
 int_abs(int)
 {
-int i;
-if (i >= 0)
-return (i);
+if (int >= 0)
+return (int);
 else
-return (-i);
+return (-int);
 }

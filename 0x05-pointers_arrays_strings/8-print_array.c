@@ -17,5 +17,5 @@ if (j != (n - 1))
 printf(",");
 }
 }
-printf('\n');
+printf("\n");
 }

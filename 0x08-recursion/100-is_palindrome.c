@@ -9,7 +9,7 @@ int _strlen_recursion(char *s)
 if (*s == '\0')
 return (0);
 else
-return (1 + _strlen_recurstion(s + 1));
+return (1 + _strlen_recursion(s + 1));
 }
 /**
 *comparator - compares each character of the string
@@ -18,7 +18,8 @@ return (1 + _strlen_recurstion(s + 1));
 *@n2: biggest iterator
 *Return: the length of a string
 */
-int comparator(chra *s, int n1, int n2)
+int comparator(char *s, int n1, int n2)
+{
 if (*(s + n1) == *(s + n2))
 {
 if (n1 == n2 || n1 == n2 + 1)
@@ -36,5 +37,5 @@ int is_palindrome(char *s)
 {
 if (*s == '\0')
 return (1);
-return (compartor(s, 0, _strlen_recursion(s) - 1));
+return (comparator(s, 0, _strlen_recursion(s) - 1));
 }

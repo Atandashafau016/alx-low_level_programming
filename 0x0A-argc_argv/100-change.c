@@ -20,7 +20,8 @@ return (1);
 else
 {
 n = atoi(argv[1]);
-if (n < 0)		{
+if (n < 0)
+{
 printf("0\n");
 }
 else

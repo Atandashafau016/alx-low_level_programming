@@ -1,6 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
-
+char **strtow(char *str);
 int word_count(char *str);
 char *first_word(char *str);
 

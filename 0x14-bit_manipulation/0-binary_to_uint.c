@@ -12,7 +12,7 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int base = 1, decimal = 0, bin = 0, rem, strlen;
 
 
-	if (!b || b == NULL)
+	if (!b)
 		return (0);
 	strlen = atoi(b);
 

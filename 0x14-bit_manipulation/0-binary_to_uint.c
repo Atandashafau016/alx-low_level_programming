@@ -1,4 +1,5 @@
 #include "main.h"
+#include <math.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
@@ -9,26 +10,16 @@
  */
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int base = 1, decimal = 0, bin = 0, rem, strlen;
-
-
-	if (!b)
-		return (0);
-	strlen = atoi(b);
-
-	while (strlen)
-	{
-		rem = len % 10;
-		decimal = decimal + rem * base;
-		len = len / 10;
-		base = base * 2;
-	}
-
-while (b[bin])
+unsigned int dec = 0, i = 0, rem, len;
+if (!b || b == NULL)
+return (0);
+len = atoi(b);
+while (b != 0)
 {
-	if (b[bin] < '0' || b[bin] > '1')
-	return (0);
-	count++;
+rem = len % 10;
+i /= 10;
+dec += rem *pow(2, i);
+i++;
 }
-	return (decimal);
+return (dec);
 }

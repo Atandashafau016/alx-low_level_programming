@@ -1,34 +1,36 @@
 #include "main.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include <unistd.h>
 /**
- * read_textfile - A prototype for Read a file
- * @filename: name of file to read to stdout
- * @letters: number of letters in the file
- * Return: file and number of letters in it
+ *read_textfile - reads a text file and prints the letters
+ *@filename: filename of the text to be read.
+ *@letters: numbers of letters printed.
+ *Return: numbers of letters printed. It fails, returns 0.
  */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-int fd, count, str;
-char *buf;
-buf = malloc(sizeof(char) * letters);
-if (buf == NULL)
-return (0);
-if (filename == NULL)
-return (-1);
-fd = open(filename, O_RDONLY);
-if (fd < 0)
+	ssize_t nread = 0;
+char *buf = (char*) malloc(sizeof(char) * letters);
+if (!filename || !buf)
+return 0;
+FILE *fp = fopen(filename, "r");
+if (!fp)
 {
-return (0);
-exit(1);
+free(buf);
+return (
+0);
 }
-count = read(fd, buf, letters);
-buf[count] = '\0';
-close(fd);
-str = write(STDOUT_FILENO, buf, letters);
-return (str);
+nread = fread(buf, sizeof(char), letters, fp);
+fclose(fp);
+if (nread == 0)
+{
+free(buf);
+return (0);
+}
+ssize_t nwritten = write(STDOUT_FILENO, buf, nread);
+free(buf);
+if (nwritten != nread)
+return (0);
+return (nread);
 }

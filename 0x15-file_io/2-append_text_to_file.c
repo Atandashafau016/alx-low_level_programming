@@ -1,22 +1,23 @@
-task 1
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <unistd.h>
+
 /**
- *create_file - creates a file
- *@filename: file to be created
- *@text_content: content to write to the file
- *Return: 1 on success and 0 on error
+ * append_text_to_file - Appends text at the end of a file.
+ * @filename: file name of the file to append to.
+ * @text_content: the text content to append.
+ * Return: If the function fail return -1 and 1 on success
  */
-int create_file(const char *filename, char *text_content)
+int append_text_to_file(const char *filename, char *text_content)
 {
+int append_text_to_file(const char *filename, char *text_content) {
 if (!filename)
 return (-1);
 mode_t permissions = S_IRUSR | S_IWUSR;
-int flags = O_WRONLY | O_CREAT | O_TRUNC;
+int flags = O_WRONLY | O_APPEND;
 int fd = open(filename, flags, permissions);
 if (fd == -1)
 return (-1);

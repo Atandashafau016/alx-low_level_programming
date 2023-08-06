@@ -1,1 +1,0 @@
- c Doubly linked list
